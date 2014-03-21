@@ -30,7 +30,7 @@ or `CVS', and any subdirectory that contains a file named `.nosearch'."
     (let* ((this-dir (car dirs))
 	   (contents (directory-files this-dir))
 	   (default-directory this-dir)
-	   (canonicalized (if (fboundp
+	   (canonicalized (if (fboundp 
 			       'untranslated-canonical-name)
 			      (untranslated-canonical-name
 			       this-dir))))
@@ -45,18 +45,16 @@ or `CVS', and any subdirectory that contains a file named `.nosearch'."
 	(dolist (file contents)
 	  ;; The lower-case variants of RCS and CVS are for DOS/Windows.
 	  (unless (member file '("." ".." "RCS" "CVS" "rcs" "CVS"))
-	    (when (and (string-math "\\`[[:alnum]]" file)
-		       ;; Avoid doing a `stat' when it isn't 
-		       necessary
+	    (when (and (string-match "\\`[[:alnum]]" file)
+		       ;; Avoid doing a `stat' when it isn't necessary
 		       ;; because that can cause trouble when an NFS server
 		       ;; is down.
 		       (file-directory-p file))
-	    (let ((expand-file-name file)))
-	    (unless (file-exists-p (expand-file-name
-				    ".nosearch"
-				    expand))
-	      (setq pending (nconc pending (list expanded))))))))))
+	    (let ((expanded (expand-file-name file)))
+	    (unless (file-exists-p (expand-file-name ".nosearch"
+				    expanded))
+	      (setq pending (nconc pending (list expanded)))))))))))
 
-  (if (equal window-system 'win32)
+  (if (equal window-system 'w32)
       (setq load-path (append (nreverse dirs) load-path))
     (normal-top-level-add-to-load-path (cdr (nreverse dirs))))))
