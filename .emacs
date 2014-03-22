@@ -4,7 +4,7 @@
 
 ;;;;;;;;;;;;;;;;; 基本设置 ;;;;;;;;;;;;;;;
 
-(defconst my-emacs-path "~/" "我的emacs相关配置文件路径")
+(defconst my-emacs-path "~/software-repository/emacs/" "我的emacs相关配置文件路径")
 (defconst my-emacs-my-lisps-path (concat my-emacs-path "my-lisps/")
 "我自己写的emacs lisp包的路径")
 (defconst my-emacs-lisps-path (concat my-emacs-path "lisps/")
@@ -98,7 +98,7 @@
 
 ;;; git-emacs
 ;;
-(add-to-list 'load-path "~/lisps/git-emacs/")
+(add-to-list 'load-path (concat my-emacs-lisps-path "git-emacs/"))
 (require 'git-emacs)
 
 
@@ -112,7 +112,7 @@
 (require 'info)
 (require 'grep)
 ;; color theme
-(add-to-list 'load-path "~/lisps/color-theme")
+(add-to-list 'load-path (concat my-emacs-lisps-path "color-theme/"))
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
