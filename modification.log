@@ -1,0 +1,6 @@
+
+* File error: Cannot open load file, ~/emacs-24.3/my-lisps/my-subdirs
+** 将主目录设置成了/home/emacs-24.3/，所以在主目录下没有/home/emacs-24.3/emacs-24.3
+   将 (defconst my-emacs-path "~/emacs-24.3/" "我的emacs相关配置文件路径")
+   修改为 (defconst my-emacs-path "~/" "我的emacs相关配置文件路径")
+	
