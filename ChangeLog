@@ -1,3 +1,9 @@
+2014-03-22    <261008760@qq.com>
+
+	* add some description of shortcuts in shortcut.org
+
+	* bound shortcut `C-h' to command 'org-delete-backward-char'
+
 2014-03-22    <Administrator@SOIMCWNYXDDL7PX>
 
 	* modification.log: to write the process of modification.

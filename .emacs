@@ -84,11 +84,25 @@
 (add-hook 'comint-output-filter-functions
 	   'comint-watch-for-password-prompt)
 
+;;; 利用`eval-after-load'加快启动速度的库
+;; 用eval-after-load避免不必要的elisp包的加载
+;; http://emacser.com/eval-after-load.htm
+(require 'eval-after-load)
+
 ;;; org-mode-setting
 ;;(setq load-path (cons "lisps/org/lisp" load-path))
-(require 'org-install)
+;;(require 'org-install)
+(require 'org-settings)
 ;; 让扩展名为.org的文件打开后默认进入 org mode
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+
+;;; git-emacs
+;;
+(add-to-list 'load-path "~/lisps/git-emacs/")
+(require 'git-emacs)
+
+
+
 
 
 ;;; 对Info-mode, view-mode, grep-mode, color-theme绑定vi中的光标移动快捷键hjkl,
@@ -109,7 +123,7 @@
   "Find load file by MAP."
   (case map
     ('Info-mode-map "info")
-    ('view-mode-map "vire")
+    ('view-mode-map "view")
     ('grep-mode-map "grep")
     ('color-theme-mode-map "color-theme")
    )
