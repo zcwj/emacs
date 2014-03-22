@@ -15,5 +15,5 @@
 
 ;; 把"my-emacs-lisps-path"的所有子目录都加到`load-path`里面
 (load (concat my-emacs-my-lisps-path "my-subdirs"))
-(my-add-subdirs-to-load-path my-emacs my-emacs-lisps-path)
+(my-add-subdirs-to-load-path my-emacs-lisps-path)
 (my-add-subdirs-toload-path my-emacs-my-lisps-path)
