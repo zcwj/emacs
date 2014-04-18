@@ -4,7 +4,7 @@
 
 ;;;;;;;;;;;;;;;;; 基本设置 ;;;;;;;;;;;;;;;
 
-(defconst my-emacs-path "~/" "我的emacs相关配置文件路径")
+(defconst my-emacs-path "~/software-repository/emacs/" "我的emacs相关配置文件路径")
 (defconst my-emacs-my-lisps-path (concat my-emacs-path "my-lisps/")
 "我自己写的emacs lisp包的路径")
 (defconst my-emacs-lisps-path (concat my-emacs-path "lisps/")
@@ -98,6 +98,7 @@
 
 ;;; git-emacs
 ;;
+<<<<<<< HEAD
 ;;(add-to-list 'load-path "~/lisps/git-emacs/")
 ;;(require 'git-emacs)
 
@@ -303,3 +304,47 @@
 (set-foreground-color "white") ;; 使用白色前景
  (set-face-foreground 'region "red")  ;; 区域前景颜色设为红色
 (set-face-background 'region "blue") ;; 区域背景色设为蓝色
+=======
+(add-to-list 'load-path (concat my-emacs-lisps-path "git-emacs/"))
+(require 'git-emacs)
+
+
+
+
+
+;;; 对Info-mode, view-mode, grep-mode, color-theme绑定vi中的光标移动快捷键hjkl,
+
+(require 'cl)
+(require 'view)
+(require 'info)
+(require 'grep)
+;; color theme
+(add-to-list 'load-path (concat my-emacs-lisps-path "color-theme/"))
+(require 'color-theme)
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)))
+
+(require 'cl)
+(defun find-loadfile-by-map (map)
+  "Find load file by MAP."
+  (case map
+    ('Info-mode-map "info")
+    ('view-mode-map "view")
+    ('grep-mode-map "grep")
+    ('color-theme-mode-map "color-theme")
+   )
+)
+(dolist (map (list Info-mode-map view-mode-map grep-mode-map color-theme-mode-map))
+  (let ((file (find-loadfile-by-map map)))
+    (eval-after-load file
+      '(progn
+	 (define-key map "h" 'backward-char)
+	 (define-key map "l" 'forward-char)
+	 (define-key map "j" 'next-line)
+	 (define-key map "k" 'previous-line)
+	 )
+      )
+    )
+  )
+>>>>>>> faaedb72184599b69d842c3ed6eb6f5bcd8a9bad
