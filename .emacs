@@ -1,6 +1,6 @@
-;; -*- Emacs-Lisp -*-
+;; -*- emacs-lisp -*-
 
-;; Time-stamp: <2010-11-03 17:45:59 Wednesday by taoshanwen>
+;; time-stamp: <2010-11-03 17:45:59 wednesday by taoshanwen>
 
 ;;;;;;;;;;;;;;;;; 基本设置 ;;;;;;;;;;;;;;;
 
@@ -21,7 +21,7 @@
 (setq user-mail-address "261008760@qq.com")
 (setq user-fill-name "左次")
 
-;;; 不要显示Emacs的开始画面
+;;; 不要显示emacs的开始画面
 (setq inhibit-startup-message t)
 (setq initial-scratch-message "")
 
@@ -30,7 +30,7 @@
 
 ;;; 尽快显示按键序列
 (setq echo-keystrokes 0.1)
-(setq system-time-locale "C")
+(setq system-time-locale "c")
 
 ;;; 不要流动条
 (customize-set-variable 'scroll-bar-mode nil)
@@ -70,7 +70,7 @@
 (setq-default svae-place t)
 
 ;;; emacs lock
-(autoload 'toggle-emacs-lock "emacs-lock" "Emacs lock" t)
+(autoload 'toggle-emacs-lock "emacs-lock" "emacs lock" t)
 
 ;;; 先格式化再补全
 (setq tab-always-indent 'complete)
@@ -98,45 +98,208 @@
 
 ;;; git-emacs
 ;;
-(add-to-list 'load-path "~/lisps/git-emacs/")
-(require 'git-emacs)
+;;(add-to-list 'load-path "~/lisps/git-emacs/")
+;;(require 'git-emacs)
 
 
 
 
 
-;;; 对Info-mode, view-mode, grep-mode, color-theme绑定vi中的光标移动快捷键hjkl,
+;;; 对info-mode, view-mode, grep-mode, color-theme绑定vi中的光标移动快捷键hjkl,
 
-(require 'cl)
-(require 'view)
-(require 'info)
-(require 'grep)
-;; color theme
-(add-to-list 'load-path "~/lisps/color-theme")
-(require 'color-theme)
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)))
+;; (require 'cl)
+;; (require 'view)
+;; (require 'info)
+;; (require 'grep)
+;; ;; color theme
+;; (add-to-list 'load-path "~/lisps/color-theme")
+;; (require 'color-theme)
+;; (eval-after-load "color-theme"
+;;   '(progn
+;;      (color-theme-initialize)))
 
-(require 'cl)
-(defun find-loadfile-by-map (map)
-  "Find load file by MAP."
-  (case map
-    ('Info-mode-map "info")
-    ('view-mode-map "view")
-    ('grep-mode-map "grep")
-    ('color-theme-mode-map "color-theme")
-   )
-)
-(dolist (map (list Info-mode-map view-mode-map grep-mode-map color-theme-mode-map))
-  (let ((file (find-loadfile-by-map map)))
-    (eval-after-load file
-      '(progn
-	 (define-key map "h" 'backward-char)
-	 (define-key map "l" 'forward-char)
-	 (define-key map "j" 'next-line)
-	 (define-key map "k" 'previous-line)
-	 )
-      )
-    )
-  )
+;; (require 'cl)
+;; (defun find-loadfile-by-map (map)
+;;   "find load file by map."
+;;   (case map
+;;     ('info-mode-map "info")
+;;     ('view-mode-map "view")
+;;     ('grep-mode-map "grep")
+;;     ('color-theme-mode-map "color-theme")
+;;    )
+;; )
+;; (dolist (map (list info-mode-map view-mode-map grep-mode-map color-theme-mode-map))
+;;   (let ((file (find-loadfile-by-map map)))
+;;     (eval-after-load file
+;;       '(progn
+;; 	 (define-key map "h" 'backward-char)
+;; 	 (define-key map "l" 'forward-char)
+;; 	 (define-key map "j" 'next-line)
+;; 	 (define-key map "k" 'previous-line)
+;; 	 )
+;;       )
+;;     )
+;;   )
+
+
+;;; 自动补全  auto-complete
+;;(require 'auto-complete-settings)
+
+
+;;; 快捷键
+;;(global-set-key "\C-xl" 'goto-line)
+;;(define-key global-map "\c-xl" 'goto-line)
+;;(define-key ctl-x-map "l" 'goto-line)
+;;(global-set-key (kbd "C-j") 'goto-line)
+;;对某个特定模式比如c++-mode进行快捷键定制
+;;(define-key c++-mode-map (kbd "C-j") 'goto-line)
+
+;;(global-set-key "\C-h" 'backward-char)
+;;(define-key global-map "\C-h" 'backward-char)
+(define-key global-map "\C-h" 'delete-backward-char)
+;; bind the goto-line command to the function key F5
+(global-set-key [f5] 'goto-line)
+;; Control-Alt-F5 can be bound like this:
+;;(global-set-key [C-A-f5] 'goto-line)   无法绑定到alt键
+;;(global-set-key [C-M-f5] 'goto-line)
+;;; 选择命令
+;;(define-key global-map [C-return] 'set-mark-command)
+(define-key global-map (kbd "C-,") 'set-mark-command)
+(global-set-key "\C-x\C-a" 'mark-whole-buffer);; 全选 mark-whole-buffer
+;;(global-set-key "\C-xw" 'copy-region-as-kill);; 复制
+(global-set-key "\C-xx" 'copy-region-as-kill);; 复制
+
+
+;;; 默认快捷键
+;; C-M-j  开始新一行注释
+;; C-s   查找
+;; M-%   查找并替换
+;; 
+;; C-/ 或者 C-x u   或者 C-_  撤销
+;; C-g C-/ 重做
+;; C-k kill-line
+;; C-z 或者 C-x C-z suspend-frame
+;; C-g abort-recursive-edit
+;;(global-set-key "\C-g" 'abort-recursive-edit)
+;; Ctrl+x Ctrl+c退出 Emacs 
+
+;;; 帮助命令
+;;(global-set-key "\c-x?" 'help-command)
+(define-key ctl-x-map "?" 'help-command)
+;; 默认命令 C-h h view-hello-file
+;;(define-key ctl-x-map "h" 'view-help-file)
+;;查看变量的值和文档
+;;C-h v (describe-variable)
+(define-key ctl-x-map "v" 'describe-variable)
+;; 查看函数的文档
+;; C-h f (describe-function)
+(define-key ctl-x-map "f" 'describe-function)
+;; 查看face的文档
+;; M-x describe-face
+;; 查看某个mode的文档
+;; C-h m (describe-mode)
+;; 刚开始学习某个mode的时候, 可以用C-h m看看当前buffer对应的主mode和副mode的文档, 这个文档一般都会包括mode中的命令和快捷键列表.
+(define-key ctl-x-map "m" 'describe-mode)
+;; 查看某个快捷键对应的命令
+;; C-h k (describe-key)
+;;(global-set-key [C-f5] 'describe-key)
+(define-key ctl-x-map "k" 'describe-key)
+;; 查看某个命令对应的快捷键
+;; C-h w (where-is)
+;;(global-set-key [C-M-f5] 'where-is)
+;;(define-key ctl-x-map "w" 'where-is)
+;; 查看当前buffer所有的快捷键列表
+;; C-h b (describe-bindings)
+;;(global-set-key [C-f6] 'describe-bindings)
+(define-key ctl-x-map "b" 'describe-bindings)
+;; 查看当前buffer中以某个快捷键序列开头的快捷键列表
+;; <待查看的快捷键序列> C-h，比如你想查看当前buffer中所有以C-c开头的快捷键列表，按C-c C-h就可以了。
+;; 查看函数的代码
+;; find-function
+;; 查看变量的代码
+;; find-variable
+;; 查看face的代码
+;; find-face-definition
+;; M-x apropos
+;; 查看包含某个关键词的函数,变量,face
+
+;;; 执行Elisp代码
+;; 在某条语句后面按C-x C-e (eval-last-sexp)可以执行那条语句
+;; M-x eval-buffer 可以执行当前buffer内的Elisp代码
+;; 选中一个region后, M-x eval-region可以执行这个region内的代码
+
+
+;; 颜色定制
+(set-background-color "black") ;; 使用黑色背景
+(set-foreground-color "white") ;; 使用白色前景
+ (set-face-foreground 'region "red")  ;; 区域前景颜色设为红色
+(set-face-background 'region "blue") ;; 区域背景色设为蓝色
+
+(global-set-key "\C-x\C-a" 'mark-whole-buffer);; 全选 mark-whole-buffer
+(global-set-key "\C-xx" 'copy-region-as-kill);; 复制
+
+
+;;; 默认快捷键
+;; C-M-j  开始新一行注释
+;; C-s   查找
+;; M-%   查找并替换
+;; 
+;; C-/ 或者 C-x u   或者 C-_  撤销
+;; C-g C-/ 重做
+;; C-k kill-line
+;; C-z 或者 C-x C-z suspend-frame
+;; C-g abort-recursive-edit
+;;(global-set-key "\C-g" 'abort-recursive-edit)
+;; Ctrl+x Ctrl+c退出 Emacs 
+
+;;; 帮助命令
+;;(global-set-key "\c-x?" 'help-command)
+(define-key ctl-x-map "?" 'help-command)
+;; 默认命令 C-h h view-hello-file
+;;(define-key ctl-x-map "h" 'view-help-file)
+;;查看变量的值和文档
+;;C-h v (describe-variable)
+(define-key ctl-x-map "v" 'describe-variable)
+;; 查看函数的文档
+;; C-h f (describe-function)
+(define-key ctl-x-map "f" 'describe-function)
+;; 查看face的文档
+;; M-x describe-face
+;; 查看某个mode的文档
+;; C-h m (describe-mode)
+;; 刚开始学习某个mode的时候, 可以用C-h m看看当前buffer对应的主mode和副mode的文档, 这个文档一般都会包括mode中的命令和快捷键列表.
+(define-key ctl-x-map "m" 'describe-mode)
+;; 查看某个快捷键对应的命令
+;; C-h k (describe-key)
+;;(global-set-key [C-f5] 'describe-key)
+(define-key ctl-x-map "k" 'describe-key)
+;; 查看某个命令对应的快捷键
+;; C-h w (where-is)
+;;(global-set-key [C-M-f5] 'where-is)
+;;(define-key ctl-x-map "w" 'where-is)
+;; 查看当前buffer所有的快捷键列表
+;; C-h b (describe-bindings)
+;;(global-set-key [C-f6] 'describe-bindings)
+(define-key ctl-x-map "b" 'describe-bindings)
+;; 查看当前buffer中以某个快捷键序列开头的快捷键列表
+;; <待查看的快捷键序列> C-h，比如你想查看当前buffer中所有以C-c开头的快捷键列表，按C-c C-h就可以了。
+;; 查看函数的代码
+;; find-function
+;; 查看变量的代码
+;; find-variable
+;; 查看face的代码
+;; find-face-definition
+;; M-x apropos
+;; 查看包含某个关键词的函数,变量,face
+
+;;; 执行Elisp代码
+;; 在某条语句后面按C-x C-e (eval-last-sexp)可以执行那条语句
+;; M-x eval-buffer 可以执行当前buffer内的Elisp代码
+;; 选中一个region后, M-x eval-region可以执行这个region内的代码
+
+
+;; 颜色定制
+(set-background-color "black") ;; 使用黑色背景
+(set-foreground-color "white") ;; 使用白色前景
+ (set-face-foreground 'region "red")  ;; 区域前景颜色设为红色
+(set-face-background 'region "blue") ;; 区域背景色设为蓝色
