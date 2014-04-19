@@ -2,100 +2,103 @@
 
 ;; time-stamp: <2010-11-03 17:45:59 wednesday by taoshanwen>
 
-;;;;;;;;;;;;;;;;; »ù±¾ÉèÖÃ ;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;; åŸºæœ¬è®¾ç½® ;;;;;;;;;;;;;;;
 
-(defconst my-emacs-path "~/" "ÎÒµÄemacsÏà¹ØÅäÖÃÎÄ¼şÂ·¾¶")
+(defconst my-emacs-path "~/emacs/" "æˆ‘çš„emacsç›¸å…³é…ç½®æ–‡ä»¶è·¯å¾„")
 (defconst my-emacs-my-lisps-path (concat my-emacs-path "my-lisps/")
-  "ÎÒ×Ô¼ºĞ´µÄemacs lisp°üµÄÂ·¾¶")
+  "æˆ‘è‡ªå·±å†™çš„emacs lispåŒ…çš„è·¯å¾„")
 (defconst my-emacs-lisps-path (concat my-emacs-path "lisps/")
-  "ÎÒÏÂÔØµÄemacs lisp°üµÄÂ·¾¶")
+  "æˆ‘ä¸‹è½½çš„emacs lispåŒ…çš„è·¯å¾„")
 (defconst my-emacs-templates-path (concat my-emacs-path "templates/")
   "path for templates")
 
-;;; °Ñ"my-emacs-lisps-path"µÄËùÓĞ×ÓÄ¿Â¼¶¼¼Óµ½`load-path`ÀïÃæ
+;;; æŠŠ"my-emacs-lisps-path"çš„æ‰€æœ‰å­ç›®å½•éƒ½åŠ åˆ°`load-path`é‡Œé¢
 (load (concat my-emacs-my-lisps-path "my-subdirs"))
 (my-add-subdirs-to-load-path my-emacs-lisps-path)
 (my-add-subdirs-to-load-path my-emacs-my-lisps-path)
 
-;;; ¸öÈËĞÅÏ¢
+;;; ä¸ªäººä¿¡æ¯
 (setq user-mail-address "261008760@qq.com")
-(setq user-fill-name "×ó´Î")
+(setq user-fill-name "å·¦æ¬¡")
 
-;;; ²»ÒªÏÔÊ¾emacsµÄ¿ªÊ¼»­Ãæ
+;;; ä¸è¦æ˜¾ç¤ºemacsçš„å¼€å§‹ç”»é¢
 (setq inhibit-startup-message t)
 (setq initial-scratch-message "")
 
-;;; ÔÚfringeÉÏÏÔÊ¾Ò»¸öĞ¡³Ë×ÅÖ¸Ê¾µ±Ç°bufferµÄ±ß½ç
+;;; åœ¨fringeä¸Šæ˜¾ç¤ºä¸€ä¸ªå°ä¹˜ç€æŒ‡ç¤ºå½“å‰bufferçš„è¾¹ç•Œ
 (setq-default indicate-buffer-bounderies 'left)
 
-;;; ¾¡¿ìÏÔÊ¾°´¼üĞòÁĞ
+;;; å°½å¿«æ˜¾ç¤ºæŒ‰é”®åºåˆ—
 (setq echo-keystrokes 0.1)
 (setq system-time-locale "c")
 
-;;; ²»ÒªÁ÷¶¯Ìõ
+;;; ä¸è¦æµåŠ¨æ¡
 (customize-set-variable 'scroll-bar-mode nil)
-;;; ²»Òª¹¤¾ßÀ¸
+;;; ä¸è¦å·¥å…·æ 
 (customize-set-variable 'tool-bar-mode nil)
-;;; Ö§³ÖemacsºÍÍâ²¿³ÌĞòµÄÕ³Ìù
+;;; æ”¯æŒemacså’Œå¤–éƒ¨ç¨‹åºçš„ç²˜è´´
 (setq x-select-enable-clipboard t)
 
-;;; ÏÔÊ¾ÁĞºÅ
+;;; æ˜¾ç¤ºåˆ—å·
 (setq column-number-mode t)
 
 
-;;; ²»Òª×ÜÊÇÃ»ÍêÃ»ÁËµØÎÊyes or no,ÎªÊ²Ã´²»ÓÃy/n
+;;; ä¸è¦æ€»æ˜¯æ²¡å®Œæ²¡äº†åœ°é—®yes or no,ä¸ºä»€ä¹ˆä¸ç”¨y/n
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;;; ²»ÒªÉÁË¸¹â±ê
+;;; ä¸è¦é—ªçƒå…‰æ ‡
 (blink-cursor-mode -1)
 
-;;; ·ÀÖ¹Ò³Ãæ¹ö¶¯Ê±Ìø¶¯£¬scroll-margin 3¿ÉÒÔÔÚ¿¿½üÆÁÄ»±ßÑØ3ĞĞÊ±¾Í¿ªÊ¼¹ö¶¯£¬¿ÉÒÔºÜºÃµÄ¿´µ½ÉÏÏÂÎÄ
+;;; é˜²æ­¢é¡µé¢æ»šåŠ¨æ—¶è·³åŠ¨ï¼Œscroll-margin 3å¯ä»¥åœ¨é è¿‘å±å¹•è¾¹æ²¿3è¡Œæ—¶å°±å¼€å§‹æ»šåŠ¨ï¼Œå¯ä»¥å¾ˆå¥½çš„çœ‹åˆ°ä¸Šä¸‹æ–‡
 (setq scroll-margin 3
       scroll-conservatively 10000
       )
 
-;;; ¹â±ê¿¿½üÊó±êÖ¸ÕëÊ±£¬ÈÃÊó±êÖ¸Õë×Ô¶¯ÈÃ¿ª£¬±ğµ²×¡ÊÓÏß
+;;; å…‰æ ‡é è¿‘é¼ æ ‡æŒ‡é’ˆæ—¶ï¼Œè®©é¼ æ ‡æŒ‡é’ˆè‡ªåŠ¨è®©å¼€ï¼Œåˆ«æŒ¡ä½è§†çº¿
 (mouse-avoidance-mode 'animate)
 
-;;; ²»±£³ÖÁ¬ĞøµÄÖØ¸´µÄkill
+;;; ä¸ä¿æŒè¿ç»­çš„é‡å¤çš„kill
 (setq kill-do-not-save-duplicates t)
 
-;;; Ã»ÓĞÌáÊ¾Òô£¬Ò²²»ÒªÉÁÆÁ
+;;; æ²¡æœ‰æç¤ºéŸ³ï¼Œä¹Ÿä¸è¦é—ªå±
 (setq ring-bell-function 'ignire)
 
-;;; ¿ÉÒÔµİ¹éµÄÊ¹ÓÃminibuffer
+;;; å¯ä»¥é€’å½’çš„ä½¿ç”¨minibuffer
 (setq enable-recursive-minibuffers t)
 
-;;; ¿ÉÒÔ±£´æÉÏ´Î¹â±êËùÔÚµÄÎ»ÖÃ
+;;; å¯ä»¥ä¿å­˜ä¸Šæ¬¡å…‰æ ‡æ‰€åœ¨çš„ä½ç½®
 (require 'saveplace)
 (setq-default svae-place t)
 
 ;;; emacs lock
 (autoload 'toggle-emacs-lock "emacs-lock" "emacs lock" t)
 
-;;; ÏÈ¸ñÊ½»¯ÔÙ²¹È«
+;;; å…ˆæ ¼å¼åŒ–å†è¡¥å…¨
 (setq tab-always-indent 'complete)
 
-;;; ÆôÓÃÒÔÏÂ¹¦ÄÜ
+;;; å¯ç”¨ä»¥ä¸‹åŠŸèƒ½
 (put 'narrow-to-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
 
-;;; µ±ÄãÔÚshell¡¢telnet¡¢w3mµÈÄ£Ê½ÏÂÊ±£¬±ØÈ»Åöµ½¹ıÒªÊäÈëÃÜÂëµÄÇé¿ö,´ËÊ±¼ÓÃÜÏÔ³öÄãµÄÃÜÂë
+;;; å½“ä½ åœ¨shellã€telnetã€w3mç­‰æ¨¡å¼ä¸‹æ—¶ï¼Œå¿…ç„¶ç¢°åˆ°è¿‡è¦è¾“å…¥å¯†ç çš„æƒ…å†µ,æ­¤æ—¶åŠ å¯†æ˜¾å‡ºä½ çš„å¯†ç 
 (add-hook 'comint-output-filter-functions
 	  'comint-watch-for-password-prompt)
 
-;;; ÀûÓÃ`eval-after-load'¼Ó¿ìÆô¶¯ËÙ¶ÈµÄ¿â
-;; ÓÃeval-after-load±ÜÃâ²»±ØÒªµÄelisp°üµÄ¼ÓÔØ
+;;; åˆ©ç”¨`eval-after-load'åŠ å¿«å¯åŠ¨é€Ÿåº¦çš„åº“
+;; ç”¨eval-after-loadé¿å…ä¸å¿…è¦çš„elispåŒ…çš„åŠ è½½
 ;; http://emacser.com/eval-after-load.htm
 (require 'eval-after-load)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; org-mode-setting
 ;;(setq load-path (cons "lisps/org/lisp" load-path))
 ;;(require 'org-install)
+;;(require 'org-settings)
+;; è®©æ‰©å±•åä¸º.orgçš„æ–‡ä»¶æ‰“å¼€åé»˜è®¤è¿›å…¥ org mode
+;;(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (require 'org-settings)
-;; ÈÃÀ©Õ¹ÃûÎª.orgµÄÎÄ¼ş´ò¿ªºóÄ¬ÈÏ½øÈë org mode
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; git-emacs
 ;;
@@ -106,7 +109,7 @@
 
 
 
-;;; ¶Ôinfo-mode, view-mode, grep-mode, color-theme°ó¶¨viÖĞµÄ¹â±êÒÆ¶¯¿ì½İ¼ühjkl,
+;;; å¯¹info-mode, view-mode, grep-mode, color-themeç»‘å®šviä¸­çš„å…‰æ ‡ç§»åŠ¨å¿«æ·é”®hjkl,
 
 ;; (require 'cl)
 ;; (require 'view)
@@ -143,16 +146,16 @@
 ;;   )
 
 
-;;; ×Ô¶¯²¹È«  auto-complete
+;;; è‡ªåŠ¨è¡¥å…¨  auto-complete
 ;;(require 'auto-complete-settings)
 
 
-;;; ¿ì½İ¼ü
+;;; å¿«æ·é”®
 ;;(global-set-key "\C-xl" 'goto-line)
 ;;(define-key global-map "\c-xl" 'goto-line)
 ;;(define-key ctl-x-map "l" 'goto-line)
 ;;(global-set-key (kbd "C-j") 'goto-line)
-;;¶ÔÄ³¸öÌØ¶¨Ä£Ê½±ÈÈçc++-mode½øĞĞ¿ì½İ¼ü¶¨ÖÆ
+;;å¯¹æŸä¸ªç‰¹å®šæ¨¡å¼æ¯”å¦‚c++-modeè¿›è¡Œå¿«æ·é”®å®šåˆ¶
 ;;(define-key c++-mode-map (kbd "C-j") 'goto-line)
 
 ;;(global-set-key "\C-h" 'backward-char)
@@ -161,159 +164,165 @@
 ;; bind the goto-line command to the function key F5
 (global-set-key [f5] 'goto-line)
 ;; Control-Alt-F5 can be bound like this:
-;;(global-set-key [C-A-f5] 'goto-line)   ÎŞ·¨°ó¶¨µ½alt¼ü
+;;(global-set-key [C-A-f5] 'goto-line)   æ— æ³•ç»‘å®šåˆ°alté”®
 ;;(global-set-key [C-M-f5] 'goto-line)
-;;; Ñ¡ÔñÃüÁî
+;;; é€‰æ‹©å‘½ä»¤
 ;;(define-key global-map [C-return] 'set-mark-command)
 ;;(define-key global-map (kbd "C-,") 'set-mark-command)
-(define-key global-map (kbd "C-x C-x") 'set-mark-command)
-(global-set-key "\C-x\C-a" 'mark-whole-buffer);; È«Ñ¡ mark-whole-buffer
-;;(global-set-key "\C-xw" 'copy-region-as-kill);; ¸´ÖÆ
-(global-set-key "\C-xx" 'copy-region-as-kill);; ¸´ÖÆ
+(define-key global-map (kbd "C-x C-h") 'set-mark-command)
+(global-set-key "\C-x\C-a" 'mark-whole-buffer);; å…¨é€‰ mark-whole-buffer
+;;(global-set-key "\C-xw" 'copy-region-as-kill);; å¤åˆ¶
+(global-set-key "\C-xx" 'copy-region-as-kill);; å¤åˆ¶
 
 ;;; Lisp mode
 (define-key emacs-lisp-mode-map (kbd "C-;") 'comment-or-uncomment-region)
 (define-key emacs-lisp-mode-map (kbd "C-x ;") 'comment-indent)
 
-;;; Ä¬ÈÏ¿ì½İ¼ü
-;; C-M-j  ¿ªÊ¼ĞÂÒ»ĞĞ×¢ÊÍ
-;; C-s   ²éÕÒ
-;; M-%   ²éÕÒ²¢Ìæ»»
+;;; é»˜è®¤å¿«æ·é”®
+;; C-M-j  å¼€å§‹æ–°ä¸€è¡Œæ³¨é‡Š
+;; C-s   æŸ¥æ‰¾
+;; M-%   æŸ¥æ‰¾å¹¶æ›¿æ¢
 ;; 
-;; C-/ »òÕß C-x u   »òÕß C-_  ³·Ïú
-;; C-g C-/ ÖØ×ö
+;; C-/ æˆ–è€… C-x u   æˆ–è€… C-_  æ’¤é”€
+;; C-g C-/ é‡åš
 ;; C-k kill-line
-;; C-z »òÕß C-x C-z suspend-frame
+;; C-z æˆ–è€… C-x C-z suspend-frame
 ;; C-g abort-recursive-edit
 ;;(global-set-key "\C-g" 'abort-recursive-edit)
-;; Ctrl+x Ctrl+cÍË³ö Emacs 
+;; Ctrl+x Ctrl+cé€€å‡º Emacs 
 
-;;; °ïÖúÃüÁî
+;;; å¸®åŠ©å‘½ä»¤
 ;;(global-set-key "\c-x?" 'help-command)
 (define-key ctl-x-map "?" 'help-command)
-;; Ä¬ÈÏÃüÁî C-h h view-hello-file
+;; é»˜è®¤å‘½ä»¤ C-h h view-hello-file
 ;;(define-key ctl-x-map "h" 'view-help-file)
-;;²é¿´±äÁ¿µÄÖµºÍÎÄµµ
+;;æŸ¥çœ‹å˜é‡çš„å€¼å’Œæ–‡æ¡£
 ;;C-h v (describe-variable)
 (define-key ctl-x-map "v" 'describe-variable)
-;; ²é¿´º¯ÊıµÄÎÄµµ
+;; æŸ¥çœ‹å‡½æ•°çš„æ–‡æ¡£
 ;; C-h f (describe-function)
 (define-key ctl-x-map "f" 'describe-function)
-;; ²é¿´faceµÄÎÄµµ
+;; æŸ¥çœ‹faceçš„æ–‡æ¡£
 ;; M-x describe-face
-;; ²é¿´Ä³¸ömodeµÄÎÄµµ
+;; æŸ¥çœ‹æŸä¸ªmodeçš„æ–‡æ¡£
 ;; C-h m (describe-mode)
-;; ¸Õ¿ªÊ¼Ñ§Ï°Ä³¸ömodeµÄÊ±ºò, ¿ÉÒÔÓÃC-h m¿´¿´µ±Ç°buffer¶ÔÓ¦µÄÖ÷modeºÍ¸±modeµÄÎÄµµ, Õâ¸öÎÄµµÒ»°ã¶¼»á°üÀ¨modeÖĞµÄÃüÁîºÍ¿ì½İ¼üÁĞ±í.
+;; åˆšå¼€å§‹å­¦ä¹ æŸä¸ªmodeçš„æ—¶å€™, å¯ä»¥ç”¨C-h mçœ‹çœ‹å½“å‰bufferå¯¹åº”çš„ä¸»modeå’Œå‰¯modeçš„æ–‡æ¡£, è¿™ä¸ªæ–‡æ¡£ä¸€èˆ¬éƒ½ä¼šåŒ…æ‹¬modeä¸­çš„å‘½ä»¤å’Œå¿«æ·é”®åˆ—è¡¨.
 (define-key ctl-x-map "m" 'describe-mode)
-;; ²é¿´Ä³¸ö¿ì½İ¼ü¶ÔÓ¦µÄÃüÁî
+;; æŸ¥çœ‹æŸä¸ªå¿«æ·é”®å¯¹åº”çš„å‘½ä»¤
 ;; C-h k (describe-key)
 ;;(global-set-key [C-f5] 'describe-key)
 (define-key ctl-x-map "k" 'describe-key)
-;; ²é¿´Ä³¸öÃüÁî¶ÔÓ¦µÄ¿ì½İ¼ü
+;; æŸ¥çœ‹æŸä¸ªå‘½ä»¤å¯¹åº”çš„å¿«æ·é”®
 ;; C-h w (where-is)
 ;;(global-set-key [C-M-f5] 'where-is)
 ;;(define-key ctl-x-map "w" 'where-is)
-;; ²é¿´µ±Ç°bufferËùÓĞµÄ¿ì½İ¼üÁĞ±í
+;; æŸ¥çœ‹å½“å‰bufferæ‰€æœ‰çš„å¿«æ·é”®åˆ—è¡¨
 ;; C-h b (describe-bindings)
 ;;(global-set-key [C-f6] 'describe-bindings)
 (define-key ctl-x-map "b" 'describe-bindings)
-;; ²é¿´µ±Ç°bufferÖĞÒÔÄ³¸ö¿ì½İ¼üĞòÁĞ¿ªÍ·µÄ¿ì½İ¼üÁĞ±í
-;; <´ı²é¿´µÄ¿ì½İ¼üĞòÁĞ> C-h£¬±ÈÈçÄãÏë²é¿´µ±Ç°bufferÖĞËùÓĞÒÔC-c¿ªÍ·µÄ¿ì½İ¼üÁĞ±í£¬°´C-c C-h¾Í¿ÉÒÔÁË¡£
-;; ²é¿´º¯ÊıµÄ´úÂë
+;; æŸ¥çœ‹å½“å‰bufferä¸­ä»¥æŸä¸ªå¿«æ·é”®åºåˆ—å¼€å¤´çš„å¿«æ·é”®åˆ—è¡¨
+;; <å¾…æŸ¥çœ‹çš„å¿«æ·é”®åºåˆ—> C-hï¼Œæ¯”å¦‚ä½ æƒ³æŸ¥çœ‹å½“å‰bufferä¸­æ‰€æœ‰ä»¥C-cå¼€å¤´çš„å¿«æ·é”®åˆ—è¡¨ï¼ŒæŒ‰C-c C-hå°±å¯ä»¥äº†ã€‚
+;; æŸ¥çœ‹å‡½æ•°çš„ä»£ç 
 ;; find-function
-;; ²é¿´±äÁ¿µÄ´úÂë
+;; æŸ¥çœ‹å˜é‡çš„ä»£ç 
 ;; find-variable
-;; ²é¿´faceµÄ´úÂë
+;; æŸ¥çœ‹faceçš„ä»£ç 
 ;; find-face-definition
 ;; M-x apropos
-;; ²é¿´°üº¬Ä³¸ö¹Ø¼ü´ÊµÄº¯Êı,±äÁ¿,face
+;; æŸ¥çœ‹åŒ…å«æŸä¸ªå…³é”®è¯çš„å‡½æ•°,å˜é‡,face
 
-;;; Ö´ĞĞElisp´úÂë
-;; ÔÚÄ³ÌõÓï¾äºóÃæ°´C-x C-e (eval-last-sexp)¿ÉÒÔÖ´ĞĞÄÇÌõÓï¾ä
-;; M-x eval-buffer ¿ÉÒÔÖ´ĞĞµ±Ç°bufferÄÚµÄElisp´úÂë
-;; Ñ¡ÖĞÒ»¸öregionºó, M-x eval-region¿ÉÒÔÖ´ĞĞÕâ¸öregionÄÚµÄ´úÂë
+;;; æ‰§è¡ŒElispä»£ç 
+;; åœ¨æŸæ¡è¯­å¥åé¢æŒ‰C-x C-e (eval-last-sexp)å¯ä»¥æ‰§è¡Œé‚£æ¡è¯­å¥
+;; M-x eval-buffer å¯ä»¥æ‰§è¡Œå½“å‰bufferå†…çš„Elispä»£ç 
+;; é€‰ä¸­ä¸€ä¸ªregionå, M-x eval-regionå¯ä»¥æ‰§è¡Œè¿™ä¸ªregionå†…çš„ä»£ç 
 
 
-;; ÑÕÉ«¶¨ÖÆ
-(set-background-color "black") ;; Ê¹ÓÃºÚÉ«±³¾°
-(set-foreground-color "white") ;; Ê¹ÓÃ°×É«Ç°¾°
-(set-face-foreground 'region "red")  ;; ÇøÓòÇ°¾°ÑÕÉ«ÉèÎªºìÉ«
-(set-face-background 'region "blue") ;; ÇøÓò±³¾°É«ÉèÎªÀ¶É«
+;; é¢œè‰²å®šåˆ¶
+(set-background-color "black") ;; ä½¿ç”¨é»‘è‰²èƒŒæ™¯
+(set-foreground-color "white") ;; ä½¿ç”¨ç™½è‰²å‰æ™¯
+(set-face-foreground 'region "red")  ;; åŒºåŸŸå‰æ™¯é¢œè‰²è®¾ä¸ºçº¢è‰²
+(set-face-background 'region "blue") ;; åŒºåŸŸèƒŒæ™¯è‰²è®¾ä¸ºè“è‰²
 
-(global-set-key "\C-x\C-a" 'mark-whole-buffer);; È«Ñ¡ mark-whole-buffer
-(global-set-key "\C-xx" 'copy-region-as-kill);; ¸´ÖÆ
+(global-set-key "\C-x\C-a" 'mark-whole-buffer);; å…¨é€‰ mark-whole-buffer
+(global-set-key "\C-xx" 'copy-region-as-kill);; å¤åˆ¶
 (global-set-key "\C-x\C-k" 'kill-buffer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Ä¬ÈÏ¿ì½İ¼ü
+;;; é»˜è®¤å¿«æ·é”®
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; C-M-j  ¿ªÊ¼ĞÂÒ»ĞĞ×¢ÊÍ
-;; C-s   ²éÕÒ
-;; M-%   ²éÕÒ²¢Ìæ»»
+;; C-M-j  å¼€å§‹æ–°ä¸€è¡Œæ³¨é‡Š
+;; C-s   æŸ¥æ‰¾
+;; M-%   æŸ¥æ‰¾å¹¶æ›¿æ¢
 ;; 
-;; C-/ »òÕß C-x u   »òÕß C-_  ³·Ïú
-;; C-g C-/ ÖØ×ö
+;; C-/ æˆ–è€… C-x u   æˆ–è€… C-_  æ’¤é”€
+;; C-g C-/ é‡åš
 ;; C-k kill-line
-;; C-z »òÕß C-x C-z suspend-frame
+;; C-z æˆ–è€… C-x C-z suspend-frame
 ;; C-g abort-recursive-edit
 ;;(global-set-key "\C-g" 'abort-recursive-edit)
-;; Ctrl+x Ctrl+cÍË³ö Emacs 
+;; Ctrl+x Ctrl+cé€€å‡º Emacs 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; °ïÖúÃüÁî
+;;; å¸®åŠ©å‘½ä»¤
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;(global-set-key "\c-x?" 'help-command)
 (define-key ctl-x-map "?" 'help-command)
-;; Ä¬ÈÏÃüÁî C-h h view-hello-file
+;; é»˜è®¤å‘½ä»¤ C-h h view-hello-file
 ;;(define-key ctl-x-map "h" 'view-help-file)
-;;²é¿´±äÁ¿µÄÖµºÍÎÄµµ
+;;æŸ¥çœ‹å˜é‡çš„å€¼å’Œæ–‡æ¡£
 ;;C-h v (describe-variable)
 (define-key ctl-x-map "v" 'describe-variable)
-;; ²é¿´º¯ÊıµÄÎÄµµ
+;; æŸ¥çœ‹å‡½æ•°çš„æ–‡æ¡£
 ;; C-h f (describe-function)
 (define-key ctl-x-map "f" 'describe-function)
-;; ²é¿´faceµÄÎÄµµ
+;; æŸ¥çœ‹faceçš„æ–‡æ¡£
 ;; M-x describe-face
-;; ²é¿´Ä³¸ömodeµÄÎÄµµ
+;; æŸ¥çœ‹æŸä¸ªmodeçš„æ–‡æ¡£
 ;; C-h m (describe-mode)
-;; ¸Õ¿ªÊ¼Ñ§Ï°Ä³¸ömodeµÄÊ±ºò, ¿ÉÒÔÓÃC-h m¿´¿´µ±Ç°buffer¶ÔÓ¦µÄÖ÷modeºÍ¸±modeµÄÎÄµµ, Õâ¸öÎÄµµÒ»°ã¶¼»á°üÀ¨modeÖĞµÄÃüÁîºÍ¿ì½İ¼üÁĞ±í.
+;; åˆšå¼€å§‹å­¦ä¹ æŸä¸ªmodeçš„æ—¶å€™, å¯ä»¥ç”¨C-h mçœ‹çœ‹å½“å‰bufferå¯¹åº”çš„ä¸»modeå’Œå‰¯modeçš„æ–‡æ¡£, è¿™ä¸ªæ–‡æ¡£ä¸€èˆ¬éƒ½ä¼šåŒ…æ‹¬modeä¸­çš„å‘½ä»¤å’Œå¿«æ·é”®åˆ—è¡¨.
 (define-key ctl-x-map "m" 'describe-mode)
-;; ²é¿´Ä³¸ö¿ì½İ¼ü¶ÔÓ¦µÄÃüÁî
+;; æŸ¥çœ‹æŸä¸ªå¿«æ·é”®å¯¹åº”çš„å‘½ä»¤
 ;; C-h k (describe-key)
 ;;(global-set-key [C-f5] 'describe-key)
 (define-key ctl-x-map "k" 'describe-key)
-;; ²é¿´Ä³¸öÃüÁî¶ÔÓ¦µÄ¿ì½İ¼ü
+;; æŸ¥çœ‹æŸä¸ªå‘½ä»¤å¯¹åº”çš„å¿«æ·é”®
 ;; C-h w (where-is)
 ;;(global-set-key [C-M-f5] 'where-is)
 ;;(define-key ctl-x-map "w" 'where-is)
-;; ²é¿´µ±Ç°bufferËùÓĞµÄ¿ì½İ¼üÁĞ±í
+;; æŸ¥çœ‹å½“å‰bufferæ‰€æœ‰çš„å¿«æ·é”®åˆ—è¡¨
 ;; C-h b (describe-bindings)
 ;;(global-set-key [C-f6] 'describe-bindings)
 ;;(define-key ctl-x-map "b" 'describe-bindings)
-;; ²é¿´µ±Ç°bufferÖĞÒÔÄ³¸ö¿ì½İ¼üĞòÁĞ¿ªÍ·µÄ¿ì½İ¼üÁĞ±í
-;; <´ı²é¿´µÄ¿ì½İ¼üĞòÁĞ> C-h£¬±ÈÈçÄãÏë²é¿´µ±Ç°bufferÖĞËùÓĞÒÔC-c¿ªÍ·µÄ¿ì½İ¼üÁĞ±í£¬°´C-c C-h¾Í¿ÉÒÔÁË¡£
-;; ²é¿´º¯ÊıµÄ´úÂë
+;; æŸ¥çœ‹å½“å‰bufferä¸­ä»¥æŸä¸ªå¿«æ·é”®åºåˆ—å¼€å¤´çš„å¿«æ·é”®åˆ—è¡¨
+;; <å¾…æŸ¥çœ‹çš„å¿«æ·é”®åºåˆ—> C-hï¼Œæ¯”å¦‚ä½ æƒ³æŸ¥çœ‹å½“å‰bufferä¸­æ‰€æœ‰ä»¥C-cå¼€å¤´çš„å¿«æ·é”®åˆ—è¡¨ï¼ŒæŒ‰C-c C-hå°±å¯ä»¥äº†ã€‚
+;; æŸ¥çœ‹å‡½æ•°çš„ä»£ç 
 ;; find-function
-;; ²é¿´±äÁ¿µÄ´úÂë
+;; æŸ¥çœ‹å˜é‡çš„ä»£ç 
 ;; find-variable
-;; ²é¿´faceµÄ´úÂë
+;; æŸ¥çœ‹faceçš„ä»£ç 
 ;; find-face-definition
 ;; M-x apropos
-;; ²é¿´°üº¬Ä³¸ö¹Ø¼ü´ÊµÄº¯Êı,±äÁ¿,face
+;; æŸ¥çœ‹åŒ…å«æŸä¸ªå…³é”®è¯çš„å‡½æ•°,å˜é‡,face
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; Ö´ĞĞElisp´úÂë
-;; ÔÚÄ³ÌõÓï¾äºóÃæ°´C-x C-e (eval-last-sexp)¿ÉÒÔÖ´ĞĞÄÇÌõÓï¾ä
-;; M-x eval-buffer ¿ÉÒÔÖ´ĞĞµ±Ç°bufferÄÚµÄElisp´úÂë
-;; Ñ¡ÖĞÒ»¸öregionºó, M-x eval-region¿ÉÒÔÖ´ĞĞÕâ¸öregionÄÚµÄ´úÂë
+;;; æ‰§è¡ŒElispä»£ç 
+;; åœ¨æŸæ¡è¯­å¥åé¢æŒ‰C-x C-e (eval-last-sexp)å¯ä»¥æ‰§è¡Œé‚£æ¡è¯­å¥
+;; M-x eval-buffer å¯ä»¥æ‰§è¡Œå½“å‰bufferå†…çš„Elispä»£ç 
+;; é€‰ä¸­ä¸€ä¸ªregionå, M-x eval-regionå¯ä»¥æ‰§è¡Œè¿™ä¸ªregionå†…çš„ä»£ç 
 
 
-;; ÑÕÉ«¶¨ÖÆ
-(set-background-color "black") ;; Ê¹ÓÃºÚÉ«±³¾°
-(set-foreground-color "white") ;; Ê¹ÓÃ°×É«Ç°¾°
-(set-face-foreground 'region "red")  ;; ÇøÓòÇ°¾°ÑÕÉ«ÉèÎªºìÉ«
-(set-face-background 'region "blue") ;; ÇøÓò±³¾°É«ÉèÎªÀ¶É«
+;; é¢œè‰²å®šåˆ¶
+;; (set-background-color "black") ;; ä½¿ç”¨é»‘è‰²èƒŒæ™¯
+;; (set-foreground-color "white") ;; ä½¿ç”¨ç™½è‰²å‰æ™¯
+;; (set-face-foreground 'region "red")  ;; åŒºåŸŸå‰æ™¯é¢œè‰²è®¾ä¸ºçº¢è‰²
+;; (set-face-background 'region "blue") ;; åŒºåŸŸèƒŒæ™¯è‰²è®¾ä¸ºè“è‰²
+;; color theme Emacsä¸»é¢˜
+(require 'color-theme-settings)
+
+(require 'ahei-face)
+(require 'color-theme-ahei)
+(require 'face-settings)
 
 ;;; Chrome plugin : Edit with Emacs					
 ;; (add-to-list 'load-path "~/.emacs.d")
@@ -321,9 +330,18 @@
 ;; (edit-server-start)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; w3m-settings
 ;; (setq browse-url-browser-function 'w3m-browse-url)
 ;; (autoload 'w3m-browse-url
 ;;   "w3m" "Ask a WWW browser to show a URL."
 ;;   t)
 (require 'w3m-settings)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; webkit
+;;
+(require 'webkit)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
