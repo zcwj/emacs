@@ -25,3 +25,5 @@ _viminfo
 /w3m/
 \#*\#
 .emacs-places
+*.bak
+/.emacs.d/

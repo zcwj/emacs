@@ -4,7 +4,7 @@
 
 ;;;;;;;;;;;;;;;;; 基本设置 ;;;;;;;;;;;;;;;
 
-(defconst my-emacs-path "~/software-repository/emacs/" "我的emacs相关配置文件路径")
+(defconst my-emacs-path "~/" "我的emacs相关配置文件路径")
 (defconst my-emacs-my-lisps-path (concat my-emacs-path "my-lisps/")
 "我自己写的emacs lisp包的路径")
 (defconst my-emacs-lisps-path (concat my-emacs-path "lisps/")
@@ -34,6 +34,8 @@
 
 ;;; 不要流动条
 (customize-set-variable 'scroll-bar-mode nil)
+;;; 不要工具栏
+(customize-set-variable 'tool-bar-mode nil)
 
 ;;; 支持emacs和外部程序的粘贴
 (setq x-select-enable-clipboard t)
@@ -98,7 +100,6 @@
 
 ;;; git-emacs
 ;;
-<<<<<<< HEAD
 ;;(add-to-list 'load-path "~/lisps/git-emacs/")
 ;;(require 'git-emacs)
 
@@ -146,7 +147,8 @@
 ;;; 自动补全  auto-complete
 ;;(require 'auto-complete-settings)
 
-
+;;; 自动下载lisp文件
+;;(require 'auto-install)
 ;;; 快捷键
 ;;(global-set-key "\C-xl" 'goto-line)
 ;;(define-key global-map "\c-xl" 'goto-line)
@@ -253,6 +255,12 @@
 ;;(global-set-key "\C-g" 'abort-recursive-edit)
 ;; Ctrl+x Ctrl+c退出 Emacs 
 
+;;; Lisp mode
+(define-key emacs-lisp-mode-map (kbd "C-;") 'comment-region)
+(define-key emacs-lisp-mode-map (kbd "C-'") 'comment-indent)
+(define-key emacs-lisp-mode-map (kbd "C-x C-;") 'uncomment-region)
+(define-key lisp-mode-map (kbd "C-;") 'comment-region)
+
 ;;; 帮助命令
 ;;(global-set-key "\c-x?" 'help-command)
 (define-key ctl-x-map "?" 'help-command)
@@ -273,7 +281,8 @@
 ;; 查看某个快捷键对应的命令
 ;; C-h k (describe-key)
 ;;(global-set-key [C-f5] 'describe-key)
-(define-key ctl-x-map "k" 'describe-key)
+;;(define-key ctl-x-map "k" 'describe-key)
+;;(define-key ctl-x-map "k" 'describe-key)
 ;; 查看某个命令对应的快捷键
 ;; C-h w (where-is)
 ;;(global-set-key [C-M-f5] 'where-is)
@@ -304,47 +313,42 @@
 (set-foreground-color "white") ;; 使用白色前景
  (set-face-foreground 'region "red")  ;; 区域前景颜色设为红色
 (set-face-background 'region "blue") ;; 区域背景色设为蓝色
-=======
-(add-to-list 'load-path (concat my-emacs-lisps-path "git-emacs/"))
-(require 'git-emacs)
 
+;;; newsticker Rss 订阅
+;;;;;;;;;;;;;;;;;;;;;;;;;;;                                                                                      
+;;; emacs-w3m reads RSS ;;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (setq newsticker-url-list 
+;;       '(("Washington Post" "http://feeds.washingtonpost.com/rss/world") 
+;; 	 ("ScienceDaily" "http://www.sciencedaily.com/rss") 
+;; 	 ("PAMI" "http://csdl.computer.org/rss/tpami.xml") 
+;; 	 ("Knowledge Mining" "http://csdl.computer.org/rss/tkde.xml") 
+;; 	 ("Learning Technologies" "http://csdl.computer.org/rss/tlt.xml"))) 
+;; (autoload ‘w3m-region "w3m" nil t) 
+;; (setq newsticker-html-renderer 'w3m-region)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                                                                   
+;; 调用 stardict 的命令行接口 sdcv 来查辞典   ;; 
+;; 如果选中了 region 就查询 region 的内容     ;; 
+;; 否则就查询当前光标所在的词                 ;; 
+;; 组合键：C-c d                             ;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
 
-
-
-;;; 对Info-mode, view-mode, grep-mode, color-theme绑定vi中的光标移动快捷键hjkl,
-
-(require 'cl)
-(require 'view)
-(require 'info)
-(require 'grep)
-;; color theme
-(add-to-list 'load-path (concat my-emacs-lisps-path "color-theme/"))
-(require 'color-theme)
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)))
-
-(require 'cl)
-(defun find-loadfile-by-map (map)
-  "Find load file by MAP."
-  (case map
-    ('Info-mode-map "info")
-    ('view-mode-map "view")
-    ('grep-mode-map "grep")
-    ('color-theme-mode-map "color-theme")
-   )
-)
-(dolist (map (list Info-mode-map view-mode-map grep-mode-map color-theme-mode-map))
-  (let ((file (find-loadfile-by-map map)))
-    (eval-after-load file
-      '(progn
-	 (define-key map "h" 'backward-char)
-	 (define-key map "l" 'forward-char)
-	 (define-key map "j" 'next-line)
-	 (define-key map "k" 'previous-line)
-	 )
-      )
-    )
-  )
->>>>>>> faaedb72184599b69d842c3ed6eb6f5bcd8a9bad
+;; (require 'sdcv)
+;; (global-set-key (kbd "C-c d") ‘SearchStardict) 
+;; (defun SearchStardict () 
+;;   (interactive) 
+;;   (let ((begin (point-min)) 
+;;         (end (point-max))) 
+;;     (if mark-active 
+;;         (setq begin (region-beginning) 
+;;               end (region-end)) 
+;;       (save-excursion 
+;;         (backward-word) 
+;;         (mark-word) 
+;;         (setq begin (region-beginning) 
+;;               end (region-end)))) 
+;;     (message "%s" 
+;; 	     (shell-command-to-string 
+;; 	      (concat "sdcv -n -u XDICT英汉辞典  " 
+;; 		      (buffer-substring begin end)))))) 
