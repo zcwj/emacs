@@ -4,13 +4,13 @@
 
 ;;;;;;;;;;;;;;;;; 基本设置 ;;;;;;;;;;;;;;;
 
-(defconst my-emacs-path "~/software-repository/emacs/" "我的emacs相关配置文件路径")
+(defconst my-emacs-path "~/" "我的emacs相关配置文件路径")
 (defconst my-emacs-my-lisps-path (concat my-emacs-path "my-lisps/")
-"我自己写的emacs lisp包的路径")
+  "我自己写的emacs lisp包的路径")
 (defconst my-emacs-lisps-path (concat my-emacs-path "lisps/")
-"我下载的emacs lisp包的路径")
+  "我下载的emacs lisp包的路径")
 (defconst my-emacs-templates-path (concat my-emacs-path "templates/")
-"path for templates")
+  "path for templates")
 
 ;;; 把"my-emacs-lisps-path"的所有子目录都加到`load-path`里面
 (load (concat my-emacs-my-lisps-path "my-subdirs"))
@@ -34,7 +34,8 @@
 
 ;;; 不要流动条
 (customize-set-variable 'scroll-bar-mode nil)
-
+;;; 不要工具栏
+(customize-set-variable 'tool-bar-mode nil)
 ;;; 支持emacs和外部程序的粘贴
 (setq x-select-enable-clipboard t)
 
@@ -51,7 +52,7 @@
 ;;; 防止页面滚动时跳动，scroll-margin 3可以在靠近屏幕边沿3行时就开始滚动，可以很好的看到上下文
 (setq scroll-margin 3
       scroll-conservatively 10000
-)
+      )
 
 ;;; 光标靠近鼠标指针时，让鼠标指针自动让开，别挡住视线
 (mouse-avoidance-mode 'animate)
@@ -82,7 +83,7 @@
 
 ;;; 当你在shell、telnet、w3m等模式下时，必然碰到过要输入密码的情况,此时加密显出你的密码
 (add-hook 'comint-output-filter-functions
-	   'comint-watch-for-password-prompt)
+	  'comint-watch-for-password-prompt)
 
 ;;; 利用`eval-after-load'加快启动速度的库
 ;; 用eval-after-load避免不必要的elisp包的加载
@@ -98,7 +99,6 @@
 
 ;;; git-emacs
 ;;
-<<<<<<< HEAD
 ;;(add-to-list 'load-path "~/lisps/git-emacs/")
 ;;(require 'git-emacs)
 
@@ -165,11 +165,15 @@
 ;;(global-set-key [C-M-f5] 'goto-line)
 ;;; 选择命令
 ;;(define-key global-map [C-return] 'set-mark-command)
-(define-key global-map (kbd "C-,") 'set-mark-command)
+;;(define-key global-map (kbd "C-,") 'set-mark-command)
+(define-key global-map (kbd "C-x C-x") 'set-mark-command)
 (global-set-key "\C-x\C-a" 'mark-whole-buffer);; 全选 mark-whole-buffer
 ;;(global-set-key "\C-xw" 'copy-region-as-kill);; 复制
 (global-set-key "\C-xx" 'copy-region-as-kill);; 复制
 
+;;; Lisp mode
+(define-key emacs-lisp-mode-map (kbd "C-;") 'comment-or-uncomment-region)
+(define-key emacs-lisp-mode-map (kbd "C-x ;") 'comment-indent)
 
 ;;; 默认快捷键
 ;; C-M-j  开始新一行注释
@@ -233,14 +237,16 @@
 ;; 颜色定制
 (set-background-color "black") ;; 使用黑色背景
 (set-foreground-color "white") ;; 使用白色前景
- (set-face-foreground 'region "red")  ;; 区域前景颜色设为红色
+(set-face-foreground 'region "red")  ;; 区域前景颜色设为红色
 (set-face-background 'region "blue") ;; 区域背景色设为蓝色
 
 (global-set-key "\C-x\C-a" 'mark-whole-buffer);; 全选 mark-whole-buffer
 (global-set-key "\C-xx" 'copy-region-as-kill);; 复制
+(global-set-key "\C-x\C-k" 'kill-buffer)
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 默认快捷键
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; C-M-j  开始新一行注释
 ;; C-s   查找
 ;; M-%   查找并替换
@@ -252,8 +258,11 @@
 ;; C-g abort-recursive-edit
 ;;(global-set-key "\C-g" 'abort-recursive-edit)
 ;; Ctrl+x Ctrl+c退出 Emacs 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 帮助命令
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;(global-set-key "\c-x?" 'help-command)
 (define-key ctl-x-map "?" 'help-command)
 ;; 默认命令 C-h h view-hello-file
@@ -281,7 +290,7 @@
 ;; 查看当前buffer所有的快捷键列表
 ;; C-h b (describe-bindings)
 ;;(global-set-key [C-f6] 'describe-bindings)
-(define-key ctl-x-map "b" 'describe-bindings)
+;;(define-key ctl-x-map "b" 'describe-bindings)
 ;; 查看当前buffer中以某个快捷键序列开头的快捷键列表
 ;; <待查看的快捷键序列> C-h，比如你想查看当前buffer中所有以C-c开头的快捷键列表，按C-c C-h就可以了。
 ;; 查看函数的代码
@@ -292,6 +301,7 @@
 ;; find-face-definition
 ;; M-x apropos
 ;; 查看包含某个关键词的函数,变量,face
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; 执行Elisp代码
 ;; 在某条语句后面按C-x C-e (eval-last-sexp)可以执行那条语句
@@ -302,49 +312,18 @@
 ;; 颜色定制
 (set-background-color "black") ;; 使用黑色背景
 (set-foreground-color "white") ;; 使用白色前景
- (set-face-foreground 'region "red")  ;; 区域前景颜色设为红色
+(set-face-foreground 'region "red")  ;; 区域前景颜色设为红色
 (set-face-background 'region "blue") ;; 区域背景色设为蓝色
-=======
-(add-to-list 'load-path (concat my-emacs-lisps-path "git-emacs/"))
-(require 'git-emacs)
+
+;;; Chrome plugin : Edit with Emacs					
+;; (add-to-list 'load-path "~/.emacs.d")
+;; (require 'edit-server)
+;; (edit-server-start)
 
 
-
-
-
-;;; 对Info-mode, view-mode, grep-mode, color-theme绑定vi中的光标移动快捷键hjkl,
-
-(require 'cl)
-(require 'view)
-(require 'info)
-(require 'grep)
-;; color theme
-(add-to-list 'load-path (concat my-emacs-lisps-path "color-theme/"))
-(require 'color-theme)
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)))
-
-(require 'cl)
-(defun find-loadfile-by-map (map)
-  "Find load file by MAP."
-  (case map
-    ('Info-mode-map "info")
-    ('view-mode-map "view")
-    ('grep-mode-map "grep")
-    ('color-theme-mode-map "color-theme")
-   )
-)
-(dolist (map (list Info-mode-map view-mode-map grep-mode-map color-theme-mode-map))
-  (let ((file (find-loadfile-by-map map)))
-    (eval-after-load file
-      '(progn
-	 (define-key map "h" 'backward-char)
-	 (define-key map "l" 'forward-char)
-	 (define-key map "j" 'next-line)
-	 (define-key map "k" 'previous-line)
-	 )
-      )
-    )
-  )
->>>>>>> faaedb72184599b69d842c3ed6eb6f5bcd8a9bad
+;;; w3m-settings
+;; (setq browse-url-browser-function 'w3m-browse-url)
+;; (autoload 'w3m-browse-url
+;;   "w3m" "Ask a WWW browser to show a URL."
+;;   t)
+(require 'w3m-settings)
