@@ -113,5 +113,8 @@ if ! shopt -oq posix; then
   fi
 fi
 #PS1="\[\e[32m\][\u@\h \w]$\[\e[m\]"
-PS1="\[\e[32m\][\u \W]$\[\e[m\]"
+PS1="\[\e[32m\][\u@\W]$\[\e[m\]"
 export PS1
+export JAVA_HOME=~/java
+export JRE_HOME=$JAVA_HOME/bin
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:/opt/Qt5.2.1/5.2.1/gcc/bin:$PATH
