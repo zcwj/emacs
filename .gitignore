@@ -3,7 +3,9 @@
 *.via
 *.tmp
 *.err
+*.pyc
 *~
+.*.swp
 *.elc
 .emacs.backup
 .evernote-mode.log
@@ -27,3 +29,4 @@ _viminfo
 .emacs-places
 *.bak
 /.emacs.d/
+.history

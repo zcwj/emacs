@@ -58,7 +58,7 @@
   (defun org-literal-links ()
     "Show literal links."
     (interactive)
-    (org-remove-from-invisibility-spec '(org-link)) (org-restart-font-lock))
+	(org-remove-from-invisibility-spec '(org-link)) (org-restart-font-lock))
 
   (defun org-descriptive-links ()
     "Show descriptive links."
@@ -126,12 +126,7 @@
    ("C-c n"   org-forward-same-level)
    ("C-c p"   org-backward-same-level)
    ("C-c M-l" org-shiftright)
-   ("C-c ,"   org-priority-sb)
-   ;;; add by zcwj at 201303221643 begkn
-   ("C-h"     org-delete-backward-char)
-   ;;; add by zcwj at 201303221643 end
-   )
- )
+   ("C-c ,"   org-priority-sb)))
 
 (eal-define-keys
  'org-agenda-mode-map
