@@ -113,10 +113,10 @@ if ! shopt -oq posix; then
   fi
 fi
 #PS1="\[\e[32m\][\u@\h \w]$\[\e[m\]"
-PS1="\[\e[32m\][\u@\W]$\[\e[m\]"
-export PS1
+export PS1="\[\e[32m\][\W]$\[\e[m\]"
 export JAVA_HOME=~/java
 export JRE_HOME=$JAVA_HOME/bin
 #export NLS_lANG=SIMPLIFIED CHINESE_CHINA.ZHS16GBK
 export TNS_ADMIN=$HOME/oracle/instantclient_11_2
 export PATH=$HOME/oracle/instantclient_11_2:$JAVA_HOME/bin:$JRE_HOME/bin:/opt/Qt5.2.1/5.2.1/gcc/bin:$PATH
+export EDITOR="emacsclient +%d %s"
