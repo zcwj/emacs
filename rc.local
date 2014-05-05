@@ -1,0 +1,2 @@
+echo -n 255 > /sys/devices/platform/i8042/serio1/sensitivity  
+echo -n 180 > /sys/devices/platform/i8042/serio1/speed 

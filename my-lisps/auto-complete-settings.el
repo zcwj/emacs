@@ -194,6 +194,7 @@
                   svn-log-edit-mode-hook change-log-mode-hook)
  'ac-settings-4-lisp)
 
+
 (apply-args-list-to-fun
  (lambda (hook fun)
    (am-add-hooks hook fun))

@@ -1,0 +1,13 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: headx
+# key: headx
+# binding: headx
+# type: headx
+# --
+#!/usr/bin/env perl
+
+# Time-stamp: <2010-05-26 15:34:27 Wednesday by dwl>
+
+# @version 1.0
+# @author dwl
+

@@ -14,16 +14,16 @@
 ;;;;;;  org-babel-pop-to-session-maybe org-babel-load-in-session-maybe
 ;;;;;;  org-babel-expand-src-block-maybe org-babel-view-src-block-info
 ;;;;;;  org-babel-execute-maybe org-babel-execute-safely-maybe) "ob-core"
-;;;;;;  "ob-core.el" "e719f4d2aa2a0ee79b861c81085a27b5")
+;;;;;;  "ob-core.el" (21330 38627 578515 216000))
 ;;; Generated autoloads from ob-core.el
 
 (autoload 'org-babel-execute-safely-maybe "ob-core" "\
-Not documented
+
 
 \(fn)" nil nil)
 
 (autoload 'org-babel-execute-maybe "ob-core" "\
-Not documented
+
 
 \(fn)" t nil)
 
@@ -149,26 +149,34 @@ body ------------- string holding the body of the code block
 beg-body --------- point at the beginning of the body
 end-body --------- point at the end of the body
 
-\(fn FILE &rest BODY)" nil (quote macro))
+\(fn FILE &rest BODY)" nil t)
+
+(put 'org-babel-map-src-blocks 'lisp-indent-function '1)
 
 (autoload 'org-babel-map-inline-src-blocks "ob-core" "\
 Evaluate BODY forms on each inline source-block in FILE.
 If FILE is nil evaluate BODY forms on source blocks in current
 buffer.
 
-\(fn FILE &rest BODY)" nil (quote macro))
+\(fn FILE &rest BODY)" nil t)
+
+(put 'org-babel-map-inline-src-blocks 'lisp-indent-function '1)
 
 (autoload 'org-babel-map-call-lines "ob-core" "\
 Evaluate BODY forms on each call line in FILE.
 If FILE is nil evaluate BODY forms on source blocks in current
 buffer.
 
-\(fn FILE &rest BODY)" nil (quote macro))
+\(fn FILE &rest BODY)" nil t)
+
+(put 'org-babel-map-call-lines 'lisp-indent-function '1)
 
 (autoload 'org-babel-map-executables "ob-core" "\
-Not documented
 
-\(fn FILE &rest BODY)" nil (quote macro))
+
+\(fn FILE &rest BODY)" nil t)
+
+(put 'org-babel-map-executables 'lisp-indent-function '1)
 
 (autoload 'org-babel-execute-buffer "ob-core" "\
 Execute source code blocks in a buffer.
@@ -229,7 +237,7 @@ Mark current src block.
 ;;;***
 
 ;;;### (autoloads (org-babel-describe-bindings) "ob-keys" "ob-keys.el"
-;;;;;;  "25a1e7a65f088c34d9576789abaaebc6")
+;;;;;;  (21330 38627 578515 216000))
 ;;; Generated autoloads from ob-keys.el
 
 (autoload 'org-babel-describe-bindings "ob-keys" "\
@@ -240,7 +248,7 @@ Describe all keybindings behind `org-babel-key-prefix'.
 ;;;***
 
 ;;;### (autoloads (org-babel-lob-get-info org-babel-lob-execute-maybe)
-;;;;;;  "ob-lob" "ob-lob.el" "6452edf7fff14c5ebb5c1cece08ba833")
+;;;;;;  "ob-lob" "ob-lob.el" (21330 38627 578515 216000))
 ;;; Generated autoloads from ob-lob.el
 
 (autoload 'org-babel-lob-execute-maybe "ob-lob" "\
@@ -258,7 +266,7 @@ Return a Library of Babel function call as a string.
 ;;;***
 
 ;;;### (autoloads (org-babel-tangle org-babel-tangle-file) "ob-tangle"
-;;;;;;  "ob-tangle.el" "1e3955fc92c4a4b6ea38c07dd71712f5")
+;;;;;;  "ob-tangle.el" (21330 38627 582514 917000))
 ;;; Generated autoloads from ob-tangle.el
 
 (autoload 'org-babel-tangle-file "ob-tangle" "\
@@ -292,7 +300,7 @@ used to limit the exported source code blocks by language.
 ;;;;;;  org-search-view org-agenda-list org-batch-store-agenda-views
 ;;;;;;  org-store-agenda-views org-batch-agenda-csv org-batch-agenda
 ;;;;;;  org-agenda org-toggle-sticky-agenda) "org-agenda" "org-agenda.el"
-;;;;;;  (21226 15226))
+;;;;;;  (21330 38627 586514 607000))
 ;;; Generated autoloads from org-agenda.el
 
 (autoload 'org-toggle-sticky-agenda "org-agenda" "\
@@ -345,7 +353,7 @@ longer string it is used as a tags/todo match string.
 Parameters are alternating variable names and values that will be bound
 before running the agenda command.
 
-\(fn CMD-KEY &rest PARAMETERS)" nil (quote macro))
+\(fn CMD-KEY &rest PARAMETERS)" nil t)
 
 (autoload 'org-batch-agenda-csv "org-agenda" "\
 Run an agenda command in batch mode and send the result to STDOUT.
@@ -382,7 +390,7 @@ priority-l   The priority letter if any was given
 priority-n   The computed numerical priority
 agenda-day   The day in the agenda where this is listed
 
-\(fn CMD-KEY &rest PARAMETERS)" nil (quote macro))
+\(fn CMD-KEY &rest PARAMETERS)" nil t)
 
 (autoload 'org-store-agenda-views "org-agenda" "\
 Store agenda views.
@@ -392,7 +400,7 @@ Store agenda views.
 (autoload 'org-batch-store-agenda-views "org-agenda" "\
 Run all custom agenda commands that have a file argument.
 
-\(fn &rest PARAMETERS)" nil (quote macro))
+\(fn &rest PARAMETERS)" nil t)
 
 (autoload 'org-agenda-list "org-agenda" "\
 Produce a daily/weekly view from all files in variable `org-agenda-files'.
@@ -568,7 +576,7 @@ to override `appt-message-warning-time'.
 ;;;### (autoloads (org-archive-subtree-default-with-confirmation
 ;;;;;;  org-archive-subtree-default org-toggle-archive-tag org-archive-to-archive-sibling
 ;;;;;;  org-archive-subtree org-add-archive-files) "org-archive"
-;;;;;;  "org-archive.el" "9a54b246691497eb10c911c2c12f9742")
+;;;;;;  "org-archive.el" (21330 38627 586514 607000))
 ;;; Generated autoloads from org-archive.el
 
 (autoload 'org-add-archive-files "org-archive" "\
@@ -621,7 +629,8 @@ This command is set with the variable `org-archive-default-command'.
 
 ;;;***
 
-;;;### (autoloads (org-attach) "org-attach" "org-attach.el" "a3eaede165711f6f923a70dfabdb1a1f")
+;;;### (autoloads (org-attach) "org-attach" "org-attach.el" (21330
+;;;;;;  38627 586514 607000))
 ;;; Generated autoloads from org-attach.el
 
 (autoload 'org-attach "org-attach" "\
@@ -633,7 +642,7 @@ Shows a list of commands and prompts for another key to execute a command.
 ;;;***
 
 ;;;### (autoloads (org-bbdb-anniversaries) "org-bbdb" "org-bbdb.el"
-;;;;;;  "6d7b511684571eabafd1a32f0ddeff53")
+;;;;;;  (21330 38627 586514 607000))
 ;;; Generated autoloads from org-bbdb.el
 
 (autoload 'org-bbdb-anniversaries "org-bbdb" "\
@@ -644,8 +653,8 @@ Extract anniversaries from BBDB for display in the agenda.
 ;;;***
 
 ;;;### (autoloads (org-capture-import-remember-templates org-capture
-;;;;;;  org-capture-string) "org-capture" "org-capture.el" (21225
-;;;;;;  60662))
+;;;;;;  org-capture-string) "org-capture" "org-capture.el" (21330
+;;;;;;  38627 586514 607000))
 ;;; Generated autoloads from org-capture.el
 
 (autoload 'org-capture-string "org-capture" "\
@@ -692,7 +701,7 @@ Set `org-capture-templates' to be similar to `org-remember-templates'.
 ;;;;;;  org-clock-remove-overlays org-clock-display org-clock-sum
 ;;;;;;  org-clock-goto org-clock-cancel org-clock-out org-clock-in-last
 ;;;;;;  org-clock-in org-resolve-clocks) "org-clock" "org-clock.el"
-;;;;;;  "fc9903a6fff012d8cdd5dfdb5692991f")
+;;;;;;  (21330 38627 586514 607000))
 ;;; Generated autoloads from org-clock.el
 
 (autoload 'org-resolve-clocks "org-clock" "\
@@ -821,7 +830,7 @@ Otherwise, return nil.
 ;;;### (autoloads (org-agenda-columns org-insert-columns-dblock org-dblock-write:columnview
 ;;;;;;  org-columns-number-to-string org-columns-compute org-columns
 ;;;;;;  org-columns-get-format-and-top-level org-columns-remove-overlays)
-;;;;;;  "org-colview" "org-colview.el" (21225 60662))
+;;;;;;  "org-colview" "org-colview.el" (21330 38627 586514 607000))
 ;;; Generated autoloads from org-colview.el
 
 (autoload 'org-columns-remove-overlays "org-colview" "\
@@ -830,7 +839,7 @@ Remove all currently active column overlays.
 \(fn)" t nil)
 
 (autoload 'org-columns-get-format-and-top-level "org-colview" "\
-Not documented
+
 
 \(fn)" nil nil)
 
@@ -885,18 +894,18 @@ Turn on or update column view in the agenda.
 ;;;***
 
 ;;;### (autoloads (org-check-version) "org-compat" "org-compat.el"
-;;;;;;  (21216 45694))
+;;;;;;  (21330 38627 586514 607000))
 ;;; Generated autoloads from org-compat.el
 
 (autoload 'org-check-version "org-compat" "\
 Try very hard to provide sensible version strings.
 
-\(fn)" nil (quote macro))
+\(fn)" nil t)
 
 ;;;***
 
 ;;;### (autoloads (org-datetree-find-date-create) "org-datetree"
-;;;;;;  "org-datetree.el" "448ccbc2749a60a5e276fc3c9a9c5605")
+;;;;;;  "org-datetree.el" (21330 38627 586514 607000))
 ;;; Generated autoloads from org-datetree.el
 
 (autoload 'org-datetree-find-date-create "org-datetree" "\
@@ -910,7 +919,7 @@ tree can be found.
 ;;;***
 
 ;;;### (autoloads (org-element-context org-element-at-point org-element-interpret-data)
-;;;;;;  "org-element" "org-element.el" "ff99ee3c64be379f1fdf2de70654324f")
+;;;;;;  "org-element" "org-element.el" (21330 38627 590514 301000))
 ;;; Generated autoloads from org-element.el
 
 (autoload 'org-element-interpret-data "org-element" "\
@@ -972,7 +981,8 @@ Providing it allows for quicker computation.
 ;;;***
 
 ;;;### (autoloads (org-feed-show-raw-feed org-feed-goto-inbox org-feed-update
-;;;;;;  org-feed-update-all) "org-feed" "org-feed.el" "d29a33e181e81cddc70543c0ba8fdbe4")
+;;;;;;  org-feed-update-all) "org-feed" "org-feed.el" (21330 38627
+;;;;;;  590514 301000))
 ;;; Generated autoloads from org-feed.el
 
 (autoload 'org-feed-update-all "org-feed" "\
@@ -1000,7 +1010,7 @@ Show the raw feed buffer of a feed.
 ;;;***
 
 ;;;### (autoloads (org-footnote-normalize org-footnote-action) "org-footnote"
-;;;;;;  "org-footnote.el" "9906c2a4ea425a7c96d7c1371b2e35f9")
+;;;;;;  "org-footnote.el" (21330 38627 590514 301000))
 ;;; Generated autoloads from org-footnote.el
 
 (autoload 'org-footnote-action "org-footnote" "\
@@ -1034,7 +1044,8 @@ referenced sequence.
 ;;;### (autoloads (org-id-store-link org-id-find-id-file org-id-update-id-locations
 ;;;;;;  org-id-new org-id-find org-id-goto org-id-get-with-outline-drilling
 ;;;;;;  org-id-get-with-outline-path-completion org-id-get org-id-copy
-;;;;;;  org-id-get-create) "org-id" "org-id.el" "82e762bd5cca2e3d24252745fca306d7")
+;;;;;;  org-id-get-create) "org-id" "org-id.el" (21330 38627 590514
+;;;;;;  301000))
 ;;; Generated autoloads from org-id.el
 
 (autoload 'org-id-get-create "org-id" "\
@@ -1128,7 +1139,7 @@ Store a link to the current entry, using its ID.
 ;;;***
 
 ;;;### (autoloads (org-indent-mode) "org-indent" "org-indent.el"
-;;;;;;  "3d658901e4f096f04688498e4a709eb5")
+;;;;;;  (21330 38627 590514 301000))
 ;;; Generated autoloads from org-indent.el
 
 (autoload 'org-indent-mode "org-indent" "\
@@ -1145,7 +1156,8 @@ during idle time.
 
 ;;;***
 
-;;;### (autoloads (org-irc-store-link) "org-irc" "org-irc.el" "2432d5cd8271c05b0e8778cd26bf11ab")
+;;;### (autoloads (org-irc-store-link) "org-irc" "org-irc.el" (21330
+;;;;;;  38627 590514 301000))
 ;;; Generated autoloads from org-irc.el
 
 (autoload 'org-irc-store-link "org-irc" "\
@@ -1155,19 +1167,101 @@ Dispatch to the appropriate function to store a link to an IRC session.
 
 ;;;***
 
+;;;### (autoloads (org-export-as-pdf-and-open org-export-as-pdf org-export-as-latex
+;;;;;;  org-export-region-as-latex org-replace-region-by-latex org-export-as-latex-to-buffer
+;;;;;;  org-export-as-latex-batch) "org-latex" "org-latex.el" (21340
+;;;;;;  51585 622561 105000))
+;;; Generated autoloads from org-latex.el
+
+(autoload 'org-export-as-latex-batch "org-latex" "\
+Call `org-export-as-latex', may be used in batch processing.
+For example:
+
+emacs   --batch
+        --load=$HOME/lib/emacs/org.el
+        --eval \"(setq org-export-headline-levels 2)\"
+        --visit=MyFile --funcall org-export-as-latex-batch
+
+\(fn)" nil nil)
+
+(autoload 'org-export-as-latex-to-buffer "org-latex" "\
+Call `org-export-as-latex` with output to a temporary buffer.
+No file is created.  The prefix ARG is passed through to `org-export-as-latex'.
+
+\(fn ARG)" t nil)
+
+(autoload 'org-replace-region-by-latex "org-latex" "\
+Replace the region from BEG to END with its LaTeX export.
+It assumes the region has `org-mode' syntax, and then convert it to
+LaTeX.  This can be used in any buffer.  For example, you could
+write an itemized list in `org-mode' syntax in an LaTeX buffer and
+then use this command to convert it.
+
+\(fn BEG END)" t nil)
+
+(autoload 'org-export-region-as-latex "org-latex" "\
+Convert region from BEG to END in `org-mode' buffer to LaTeX.
+If prefix arg BODY-ONLY is set, omit file header, footer, and table of
+contents, and only produce the region of converted text, useful for
+cut-and-paste operations.
+If BUFFER is a buffer or a string, use/create that buffer as a target
+of the converted LaTeX.  If BUFFER is the symbol `string', return the
+produced LaTeX as a string and leave no buffer behind.  For example,
+a Lisp program could call this function in the following way:
+
+  (setq latex (org-export-region-as-latex beg end t 'string))
+
+When called interactively, the output buffer is selected, and shown
+in a window.  A non-interactive call will only return the buffer.
+
+\(fn BEG END &optional BODY-ONLY BUFFER)" t nil)
+
+(autoload 'org-export-as-latex "org-latex" "\
+Export current buffer to a LaTeX file.
+If there is an active region, export only the region.  The prefix
+ARG specifies how many levels of the outline should become
+headlines.  The default is 3.  Lower levels will be exported
+depending on `org-export-latex-low-levels'.  The default is to
+convert them as description lists.
+HIDDEN is obsolete and does nothing.
+EXT-PLIST is a property list with
+external parameters overriding org-mode's default settings, but
+still inferior to file-local settings.  When TO-BUFFER is
+non-nil, create a buffer with that name and export to that
+buffer.  If TO-BUFFER is the symbol `string', don't leave any
+buffer behind but just return the resulting LaTeX as a string.
+When BODY-ONLY is set, don't produce the file header and footer,
+simply return the content of \\begin{document}...\\end{document},
+without even the \\begin{document} and \\end{document} commands.
+when PUB-DIR is set, use this as the publishing directory.
+
+\(fn ARG &optional HIDDEN EXT-PLIST TO-BUFFER BODY-ONLY PUB-DIR)" t nil)
+
+(autoload 'org-export-as-pdf "org-latex" "\
+Export as LaTeX, then process through to PDF.
+
+\(fn ARG &optional HIDDEN EXT-PLIST TO-BUFFER BODY-ONLY PUB-DIR)" t nil)
+
+(autoload 'org-export-as-pdf-and-open "org-latex" "\
+Export as LaTeX, then process through to PDF, and open.
+
+\(fn ARG)" t nil)
+
+;;;***
+
 ;;;### (autoloads (org-load-noerror-mustsuffix) "org-macs" "org-macs.el"
-;;;;;;  (21196 60375))
+;;;;;;  (21330 38627 594514 3000))
 ;;; Generated autoloads from org-macs.el
 
 (autoload 'org-load-noerror-mustsuffix "org-macs" "\
 Load FILE with optional arguments NOERROR and MUSTSUFFIX.  Drop the MUSTSUFFIX argument for XEmacs, which doesn't recognize it.
 
-\(fn FILE)" nil (quote macro))
+\(fn FILE)" nil t)
 
 ;;;***
 
 ;;;### (autoloads (org-mobile-pull org-mobile-push) "org-mobile"
-;;;;;;  "org-mobile.el" "b989085b925c9d865acc0289896954d2")
+;;;;;;  "org-mobile.el" (21330 38627 594514 3000))
 ;;; Generated autoloads from org-mobile.el
 
 (autoload 'org-mobile-push "org-mobile" "\
@@ -1186,7 +1280,8 @@ agenda view showing the flagged items.
 
 ;;;***
 
-;;;### (autoloads (org-plot/gnuplot) "org-plot" "org-plot.el" "62748a5b07b07d7afa43d16955d0b294")
+;;;### (autoloads (org-plot/gnuplot) "org-plot" "org-plot.el" (21330
+;;;;;;  38627 594514 3000))
 ;;; Generated autoloads from org-plot.el
 
 (autoload 'org-plot/gnuplot "org-plot" "\
@@ -1219,7 +1314,7 @@ line directly before or after the table.
 ;;;;;;  org-table-begin org-table-align org-table-export org-table-import
 ;;;;;;  org-table-convert-region org-table-create org-table-create-or-convert-from-region
 ;;;;;;  org-table-create-with-table\.el) "org-table" "org-table.el"
-;;;;;;  "31377b4761d68473a76ddad9c4d2867a")
+;;;;;;  (21330 38627 598513 693000))
 ;;; Generated autoloads from org-table.el
 
 (autoload 'org-table-create-with-table\.el "org-table" "\
@@ -1830,7 +1925,8 @@ provide ORGTBL directives for the generated table.
 ;;;***
 
 ;;;### (autoloads (org-timer-set-timer org-timer-item org-timer-change-times-in-region
-;;;;;;  org-timer org-timer-start) "org-timer" "org-timer.el" "f021759499e97376e9c71d7372427c93")
+;;;;;;  org-timer org-timer-start) "org-timer" "org-timer.el" (21330
+;;;;;;  38627 598513 693000))
 ;;; Generated autoloads from org-timer.el
 
 (autoload 'org-timer-start "org-timer" "\
@@ -1891,7 +1987,7 @@ replace any running timer.
 ;;;***
 
 ;;;### (autoloads (org-git-version org-release) "org-version" "org-version.el"
-;;;;;;  (21226 15269))
+;;;;;;  (21346 15216 214632 784000))
 ;;; Generated autoloads from org-version.el
 
 (autoload 'org-release "org-version" "\
@@ -1917,7 +2013,7 @@ The location of ODT styles.")
 ;;;;;;  org-run-like-in-org-mode turn-on-orgstruct++ turn-on-orgstruct
 ;;;;;;  orgstruct-mode org-global-cycle org-cycle org-mode org-clock-persistence-insinuate
 ;;;;;;  turn-on-orgtbl org-version org-babel-load-file org-babel-do-load-languages)
-;;;;;;  "org" "org.el" (21226 15226))
+;;;;;;  "org" "org.el" (21330 38627 606513 88000))
 ;;; Generated autoloads from org.el
 
 (autoload 'org-babel-do-load-languages "org" "\
@@ -2140,7 +2236,7 @@ Call the customize function with org as argument.
 
 ;;;### (autoloads (org-ascii-publish-to-utf8 org-ascii-publish-to-latin1
 ;;;;;;  org-ascii-publish-to-ascii org-ascii-export-to-ascii org-ascii-export-as-ascii)
-;;;;;;  "ox-ascii" "ox-ascii.el" "68a1fb86bb07f90e06ab546dd24bd835")
+;;;;;;  "ox-ascii" "ox-ascii.el" (21330 38627 606513 88000))
 ;;; Generated autoloads from ox-ascii.el
 
 (autoload 'org-ascii-export-as-ascii "ox-ascii" "\
@@ -2243,7 +2339,8 @@ Return output file name.
 ;;;### (autoloads (org-beamer-publish-to-pdf org-beamer-publish-to-latex
 ;;;;;;  org-beamer-insert-options-template org-beamer-select-environment
 ;;;;;;  org-beamer-export-to-pdf org-beamer-export-to-latex org-beamer-export-as-latex
-;;;;;;  org-beamer-mode) "ox-beamer" "ox-beamer.el" "d1b62baed3d34b8ad2a51b57520a420f")
+;;;;;;  org-beamer-mode) "ox-beamer" "ox-beamer.el" (21330 38627
+;;;;;;  610512 778000))
 ;;; Generated autoloads from ox-beamer.el
 
 (autoload 'org-beamer-mode "ox-beamer" "\
@@ -2385,7 +2482,7 @@ Return output file name.
 
 ;;;### (autoloads (org-html-publish-to-html org-html-export-to-html
 ;;;;;;  org-html-convert-region-to-html org-html-export-as-html org-html-htmlize-generate-css)
-;;;;;;  "ox-html" "ox-html.el" "8e68dfcd2eb63e7e8b5b6ad20c3e4687")
+;;;;;;  "ox-html" "ox-html.el" (21330 38627 610512 778000))
 ;;; Generated autoloads from ox-html.el
 
 (put 'org-html-head-include-default-style 'safe-local-variable 'booleanp)
@@ -2493,7 +2590,7 @@ Return output file name.
 
 ;;;### (autoloads (org-icalendar-combine-agenda-files org-icalendar-export-agenda-files
 ;;;;;;  org-icalendar-export-to-ics) "ox-icalendar" "ox-icalendar.el"
-;;;;;;  "0b4a917e81efd32a15bc54b2f2274184")
+;;;;;;  (21330 38627 610512 778000))
 ;;; Generated autoloads from ox-icalendar.el
 
 (autoload 'org-icalendar-export-to-ics "ox-icalendar" "\
@@ -2545,7 +2642,8 @@ The file is stored under the name chosen in
 
 ;;;### (autoloads (org-latex-publish-to-pdf org-latex-publish-to-latex
 ;;;;;;  org-latex-export-to-pdf org-latex-export-to-latex org-latex-convert-region-to-latex
-;;;;;;  org-latex-export-as-latex) "ox-latex" "ox-latex.el" "cdc9d68aa89323c22f9fa2539f61dab3")
+;;;;;;  org-latex-export-as-latex) "ox-latex" "ox-latex.el" (21330
+;;;;;;  38627 610512 778000))
 ;;; Generated autoloads from ox-latex.el
 
 (autoload 'org-latex-export-as-latex "ox-latex" "\
@@ -2671,7 +2769,8 @@ Return output file name.
 ;;;***
 
 ;;;### (autoloads (org-md-export-to-markdown org-md-convert-region-to-md
-;;;;;;  org-md-export-as-markdown) "ox-md" "ox-md.el" "f5b7b56462757fe732d8aa9aba4b42c8")
+;;;;;;  org-md-export-as-markdown) "ox-md" "ox-md.el" (21330 38627
+;;;;;;  610512 778000))
 ;;; Generated autoloads from ox-md.el
 
 (autoload 'org-md-export-as-markdown "ox-md" "\
@@ -2733,7 +2832,8 @@ Return output file's name.
 ;;;***
 
 ;;;### (autoloads (org-odt-convert org-odt-export-to-odt org-odt-export-as-odf-and-open
-;;;;;;  org-odt-export-as-odf) "ox-odt" "ox-odt.el" "e5f20e1b24d219133d2cdd1eaf08b406")
+;;;;;;  org-odt-export-as-odf) "ox-odt" "ox-odt.el" (21330 38627
+;;;;;;  614512 472000))
 ;;; Generated autoloads from ox-odt.el
 
 (put 'org-odt-preferred-output-format 'safe-local-variable 'stringp)
@@ -2796,7 +2896,7 @@ using `org-open-file'.
 ;;;***
 
 ;;;### (autoloads (org-org-publish-to-org org-org-export-to-org org-org-export-as-org)
-;;;;;;  "ox-org" "ox-org.el" "b17991920074e6534f5f37f7ef471603")
+;;;;;;  "ox-org" "ox-org.el" (21330 38627 614512 472000))
 ;;; Generated autoloads from ox-org.el
 
 (autoload 'org-org-export-as-org "ox-org" "\
@@ -2870,7 +2970,7 @@ Return output file name.
 
 ;;;### (autoloads (org-publish-current-project org-publish-current-file
 ;;;;;;  org-publish-all org-publish) "ox-publish" "ox-publish.el"
-;;;;;;  "267506990e9e65febe17c526136b03e6")
+;;;;;;  (21330 38627 614512 472000))
 ;;; Generated autoloads from ox-publish.el
 
 (defalias 'org-publish-project 'org-publish)
@@ -2914,7 +3014,7 @@ the project.
 ;;;***
 
 ;;;### (autoloads (org-texinfo-convert-region-to-texinfo org-texinfo-publish-to-texinfo)
-;;;;;;  "ox-texinfo" "ox-texinfo.el" "a47dda9a55a9c7dc3c61fbe04bf46e19")
+;;;;;;  "ox-texinfo" "ox-texinfo.el" (21330 38627 614512 472000))
 ;;; Generated autoloads from ox-texinfo.el
 
 (autoload 'org-texinfo-publish-to-texinfo "ox-texinfo" "\
@@ -2940,7 +3040,8 @@ this command to convert it.
 
 ;;;### (autoloads (org-export-dispatch org-export-to-file org-export-to-buffer
 ;;;;;;  org-export-insert-default-template org-export-replace-region-by
-;;;;;;  org-export-string-as org-export-as) "ox" "ox.el" "466b6c2e9e886b6be3dc0db4de098e95")
+;;;;;;  org-export-string-as org-export-as) "ox" "ox.el" (21330 38627
+;;;;;;  614512 472000))
 ;;; Generated autoloads from ox.el
 
 (autoload 'org-export-as "ox" "\
@@ -3047,6 +3148,8 @@ This function returns BUFFER.
 
 \(fn BACKEND BUFFER &optional ASYNC SUBTREEP VISIBLE-ONLY BODY-ONLY EXT-PLIST POST-PROCESS)" nil nil)
 
+(put 'org-export-to-buffer 'lisp-indent-function '2)
+
 (autoload 'org-export-to-file "ox" "\
 Call `org-export-as' with output to a specified file.
 
@@ -3080,6 +3183,8 @@ The function returns either a file name returned by POST-PROCESS,
 or FILE.
 
 \(fn BACKEND FILE &optional ASYNC SUBTREEP VISIBLE-ONLY BODY-ONLY EXT-PLIST POST-PROCESS)" nil nil)
+
+(put 'org-export-to-file 'lisp-indent-function '2)
 
 (autoload 'org-export-dispatch "ox" "\
 Export dispatcher for Org mode.

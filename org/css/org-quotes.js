@@ -1,0 +1,20 @@
+var r_text = new Array ();
+r_text[0] = "I honestly don't know how I ever lived without org-mode  -- Luke Gaudreau on Twitter.";
+r_text[1] = "Org-mode is one of those tools that change the way you work and think forever.  -- Kaluza Twitter";
+r_text[2] = "PT>   Damn! Org is again a step ahead of me. :D Nick> Yup - get used to it ;-)  -- PT and Nick Dokos on emacs-orgmode.";
+r_text[3] = "Org-mode has changed my life!  -- Jonathan E. Magen in a blog post";
+r_text[4] = "If humans could mate with software, I'd have org-mode's babies.  -- Chris League on Twitter.";
+r_text[5] = "If I hated everything about Emacs, I would still use it for org-mode. [...]  -- Avdi on Twitter";
+r_text[6] = "Org-mode is like half the awesomeness of emacs  -- Pavel on Twitter";
+r_text[7] = "Org-mode is so awesome because everything is ultimately still plain text files.  -- Philip J. Hollenback on Twitter";
+r_text[8] = "If Emacs is an operating system, Org-mode is the office/productivity suite.  -- Eric Schulte in his screenshot on Worg";
+r_text[9] = "Org-mode seemed like a way to tame the text file beast and ride it off into the sunset.  -- Joey Doll in a blog post";
+r_text[10] = "Org-mode is a note taking tool unparalleled in it's simplicity and ease of use.  -- Shrutarshi Basu in a blog post";
+r_text[11] = "Org-mode is like doubling the RAM in your brain.  -- Casey Brant on  Twitter";
+r_text[12] = "Org-mode; gestalt of The One True Editor.  Sentience is close at hand.  -- Richard Hoskins on Twitter";
+r_text[13] = "Emacs org-mode makes my geek heart flutter. [...]  -- Sacha Chua on Twitter";
+r_text[14] = "Little by little org-mode will take over my life.   -- Mehul Sanghvi";
+r_text[15] = "The best thing that happened to Emacs since Emacs itself: Org Mode.  -- Tomas S. Grigera on twitter";
+r_text[16] = "Every time I go to use Org-mode, I find something new and helpful.  -- Katherine Cox on Google+";
+var i = Math.floor(17*Math.random())
+document.write(r_text[i]);

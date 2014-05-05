@@ -1,0 +1,16 @@
+# name: ums c-mode header
+# --
+/******************************************************************************
+      Copyright (C),2002-2014,${1:China unionpay Merchant Services} Co.,Ltd.
+File name       : ${2:filename}
+Author          : ${3:author}
+Version         : ${4:0.01}
+Date            : `(format-time-string "%Y-%m-%d %T")`
+Description     : ${5:main function,interface,output...}
+Others          : ${6:some other infomation}
+History         : list of modification
+  No.	Date		Author		Modification
+   ===	==========	========	======================================
+******************************************************************************/
+$7
+////////////////////////////////// $2 end //////////////////////////////////////
